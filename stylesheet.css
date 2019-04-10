@@ -1,0 +1,23 @@
+/* BASIC STYLING */
+body { 
+	background-color: #f2f2f2;
+	margin:auto;
+} 
+
+h1 {
+	size: 80%;
+}
+
+#errorMessage {
+	color: red;
+}
+
+button {
+	width: 200px;
+	height: 50px;
+}
+
+#items {
+	display: inline-block;
+}
+
