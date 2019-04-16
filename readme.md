@@ -5,7 +5,7 @@ Link to the result:
 
 ## What I managed to finish
 
-* Step 1 to 7
+* Step 1 to 10
 
 ## What I didn't finish
 
@@ -16,6 +16,8 @@ Link to the result:
 * Error message in the console that I didn't have time to check (doesn't seem to impact the process)
 
 => I basically stopped at the same level as where I was in JS exercise 4.
+
+* Instruction 13: the cross is not clickable anymore after retrieving the list.
 
 => Was checking this page when I stopped: https://www.w3schools.com/howto/howto_js_close_list_items.asp
 
@@ -30,4 +32,6 @@ Redoing what I already achieved with the previous exercises. During the exercise
 ## Sources
 
 Count number of items: https://stackoverflow.com/questions/18333427/how-to-insert-row-in-html-table-body-in-javascript
+
+Local storage: https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
 

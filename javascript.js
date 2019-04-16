@@ -3,7 +3,6 @@ var errorMessage = document.getElementById("errorMessage");
 var input = document.getElementById("myInput");
 btn.addEventListener("click", onClick);
 
-
 // Add new item to the list
 function addNewRow () {
 
@@ -22,6 +21,8 @@ function addNewRow () {
 
     cell1.innerHTML = input.value;
     cell2.appendChild(img);
+
+    localStorage.setItem("itemList", addRow.innerHTML);
 };
 
 // Reset input field
@@ -38,7 +39,11 @@ function numberItems() {
 
 // Delete rows
 function deleteRow(clickEvent) {
-    document.getElementById('myTable').getElementsByTagName('tbody')[0].deleteRow(clickEvent.target.parentNode.rowIndex);
+/*  alert(clickEvent.target.parentNode.parentNode);
+*/
+   document.getElementById('myTable').getElementsByTagName('tbody')[0].deleteRow(clickEvent.target.parentNode.parentNode.sectionRowIndex);
+    localStorage.setItem("itemList", document.getElementById('myTable').innerHTML);
+
 }
 
 function onClick(){
@@ -58,7 +63,17 @@ function onClick(){
       resetInput();
       numberItems();
 
-
     }, 500);
 
 }
+
+window.addEventListener("load", retrieveData);
+
+function retrieveData() {
+  var oldList = localStorage.getItem("itemList");
+  if (oldList != null)
+  {
+    // document.getElementById("myTable").innerHTML = oldList;
+  }
+}
+
