@@ -9,17 +9,7 @@ Link to the result:
 
 ## What I didn't finish
 
-* Clearing the input field after adding item in the list
-
-* Didn't insert the number of items in the parenthesis
-
-* Error message in the console that I didn't have time to check (doesn't seem to impact the process)
-
-=> I basically stopped at the same level as where I was in JS exercise 4.
-
 * Instruction 13: the cross is not clickable anymore after retrieving the list.
-
-=> Was checking this page when I stopped: https://www.w3schools.com/howto/howto_js_close_list_items.asp
 
 ## What was the most difficult
 
