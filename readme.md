@@ -5,7 +5,7 @@ Link to the result:
 
 ## What I managed to finish
 
-* Step 1 to 10
+* Step 1 to 18
 
 ## What I didn't finish
 
@@ -35,3 +35,8 @@ Count number of items: https://stackoverflow.com/questions/18333427/how-to-inser
 
 Local storage: https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
 
+CSS gradient: https://www.w3schools.com/css/css3_gradients.asp
+
+Create input: https://www.w3schools.com/jsref/dom_obj_text.asp
+
+Keyup: https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event

@@ -1,7 +1,20 @@
 var btn = document.getElementsByClassName("btn-primary")[0];
 var errorMessage = document.getElementById("errorMessage");
 var input = document.getElementById("myInput");
-btn.addEventListener("click", onClick);
+btn.addEventListener("click", addItemInList);
+table = document.getElementById("myTable");
+table.style.background = "linear-gradient(white, grey)";
+var row = document.getElementById("tr");
+var imgEmpty = document.getElementById("emptyField");
+    imgEmpty.addEventListener("click", clearField);
+
+// Clear input field
+function clearField (event) {
+  if (input.value != "") {
+    input.value = "";
+  }
+}
+
 
 // Add new item to the list
 function addNewRow () {
@@ -13,16 +26,26 @@ function addNewRow () {
       img.width = "20";
   img.addEventListener("click", deleteRow);
 
+  var btnEdit = document.createElement("button");
+      btnEdit.id = "editRow";
+      btnEdit.className = "btn btn-secondary active";
+      btnEdit.innerHTML = "Edit";
+      btnEdit.addEventListener("click", editRow);  
+
   var addRow = document.getElementById('myTable').getElementsByTagName('tbody')[0];
 
     var newRow = addRow.insertRow(-1);
     var cell1 = newRow.insertCell(0);
     var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
 
     cell1.innerHTML = input.value;
-    cell2.appendChild(img);
+    cell1.innerHTML
+    cell3.appendChild(btnEdit);
 
     localStorage.setItem("itemList", addRow.innerHTML);
+
+
 };
 
 // Reset input field
@@ -43,10 +66,31 @@ function deleteRow(clickEvent) {
 */
    document.getElementById('myTable').getElementsByTagName('tbody')[0].deleteRow(clickEvent.target.parentNode.parentNode.sectionRowIndex);
     localStorage.setItem("itemList", document.getElementById('myTable').innerHTML);
-
 }
 
-function onClick(){
+// Edit item in list
+function editRow(event) {
+  var cell1 = event.target.parentNode.parentNode.cells[0];
+  var input = document.createElement("input");
+      input.setAttribute("type", "text");
+      input.value = cell1.innerHTML;
+      cell1.innerHTML = "";
+      cell1.appendChild(input);
+
+      input.addEventListener("keyup", saveItemEdit);
+}
+
+// Save edited item
+function saveItemEdit(event) {
+  if (event.keyCode === 13) {
+    var cell1 = event.target.parentNode;
+    var input = event.target;
+    cell1.removeChild(input);
+    cell1.innerHTML = input.value;
+  }
+}
+
+function addItemInList(){
     var icon = document.createElement("icon");
     icon.classList.add("fas", "fa-spinner", "fa-spin", "mr-2");
     btn.prepend(icon);
@@ -62,7 +106,6 @@ function onClick(){
     	errorMessage.innerHTML = "";
       resetInput();
       numberItems();
-
     }, 500);
 
 }
