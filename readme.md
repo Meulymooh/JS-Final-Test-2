@@ -19,6 +19,8 @@ Doing a task that I've never done before takes too much time.
 
 Redoing what I already achieved with the previous exercises. During the exercises it took me quite  a while to solve little instructions (e.g. adding a new row), but in the test it was much faster because I did remember things and knew where to find the information when I didn't.
 
+Continuing the test from home is a slow process. Not sure I'll be able to finish by the end of the week.
+
 ## Sources
 
 Count number of items: https://stackoverflow.com/questions/18333427/how-to-insert-row-in-html-table-body-in-javascript
