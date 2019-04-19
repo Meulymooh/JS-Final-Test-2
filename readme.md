@@ -5,7 +5,7 @@ Link to the result:
 
 ## What I managed to finish
 
-* Step 1 to 18
+* Step 1 to 19
 
 ## What I didn't finish
 
@@ -32,3 +32,7 @@ CSS gradient: https://www.w3schools.com/css/css3_gradients.asp
 Create input: https://www.w3schools.com/jsref/dom_obj_text.asp
 
 Keyup: https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event
+
+Loop: https://www.w3schools.com/js/js_loop_for.asp
+
+

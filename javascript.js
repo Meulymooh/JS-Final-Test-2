@@ -15,7 +15,6 @@ function clearField (event) {
   }
 }
 
-
 // Add new item to the list
 function addNewRow () {
 
@@ -90,6 +89,29 @@ function saveItemEdit(event) {
   }
 }
 
+// If item already in the list
+function checkDuplicate() {
+  for (var i = 0; i < table.rows.length; i++) {
+    var item = (table.rows[i].cells[0].textContent.trim());
+    if (item == input.value) {
+      return true;
+    }
+  }
+  return false;
+}
+    
+// Clear whole table
+
+input.addEventListener("keyup", clearWholeTable);
+
+function clearWholeTable() {
+  if ((event.keyCode === 13) && (input.value == "clear")) {
+    for (var i = table.rows.length - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+  }
+}
+
 function addItemInList(){
     var icon = document.createElement("icon");
     icon.classList.add("fas", "fa-spinner", "fa-spin", "mr-2");
@@ -97,11 +119,14 @@ function addItemInList(){
 
     setTimeout(function(){ 
     	btn.removeChild(icon);	
-
     	if (input.value == '') {
         errorMessage.innerHTML = "Please fill in the field!"; 
         return;
-    	}
+      }
+      else if (checkDuplicate() == true) {
+        errorMessage.innerHTML = "Item already in the list"; 
+        return;
+      }
     	else addNewRow();
     	errorMessage.innerHTML = "";
       resetInput();
@@ -119,4 +144,3 @@ function retrieveData() {
     // document.getElementById("myTable").innerHTML = oldList;
   }
 }
-
