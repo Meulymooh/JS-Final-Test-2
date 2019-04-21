@@ -4,7 +4,6 @@ var input = document.getElementById("myInput");
 btn.addEventListener("click", addItemInList);
 table = document.getElementById("myTable");
 table.style.background = "linear-gradient(white, grey)";
-var row = document.getElementById("tr");
 var imgEmpty = document.getElementById("emptyField");
     imgEmpty.addEventListener("click", clearField);
 
@@ -39,7 +38,7 @@ function addNewRow () {
     var cell3 = newRow.insertCell(2);
 
     cell1.innerHTML = input.value;
-    cell1.innerHTML
+    cell2.appendChild(img);
     cell3.appendChild(btnEdit);
 
     localStorage.setItem("itemList", addRow.innerHTML);
@@ -101,7 +100,6 @@ function checkDuplicate() {
 }
     
 // Clear whole table
-
 input.addEventListener("keyup", clearWholeTable);
 
 function clearWholeTable() {
@@ -126,6 +124,14 @@ function addItemInList(){
       else if (checkDuplicate() == true) {
         errorMessage.innerHTML = "Item already in the list"; 
         return;
+      }
+      else if (input.value == 'randomize') {
+        for (var i = table.rows.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * i) + 1;
+            var temp = table.rows[i].cells[0].innerHTML;
+            table.rows[i].cells[0].innerHTML = table.rows[j].cells[0].innerHTML;
+            table.rows[j].cells[0].innerHTML = temp;
+        }
       }
     	else addNewRow();
     	errorMessage.innerHTML = "";
