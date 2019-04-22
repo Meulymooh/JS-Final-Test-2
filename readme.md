@@ -5,7 +5,7 @@ Link to the result:
 
 ## What I managed to finish
 
-* Step 1 to 21
+Step 1 to 23
 
 ## What I didn't finish
 
@@ -13,13 +13,14 @@ Link to the result:
 
 ## What was the most difficult
 
-Doing a task that I've never done before takes too much time.
+* Doing a task that I've never done before takes too much time.
+* The local storage was difficult. I didn't manage to make it work completely.
 
 ## What I loved doing the most 
 
-Redoing what I already achieved with the previous exercises. During the exercises it took me quite  a while to solve little instructions (e.g. adding a new row), but in the test it was much faster because I did remember things and knew where to find the information when I didn't.
+Redoing what I already achieved with the previous exercises. During the exercises it took me quite  a while to solve basic instructions (e.g. adding a new row), but in the test it was much faster because I did remember things and knew where to find the information when I didn't remember.
 
-Continuing the test from home is a slow process. Not sure I'll be able to finish by the end of the week.
+Continuing the test from home is a slow process. Not sure I'll be able to finish by the end of the week but I'm progressing.
 
 ## Sources
 
@@ -34,5 +35,7 @@ Create input: https://www.w3schools.com/jsref/dom_obj_text.asp
 Keyup: https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event
 
 Loop: https://www.w3schools.com/js/js_loop_for.asp
+
+Style animation in javascript: https://www.w3schools.com/jsref/prop_style_animationplaystate.asp
 
 

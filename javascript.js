@@ -36,14 +36,15 @@ function addNewRow () {
     var cell1 = newRow.insertCell(0);
     var cell2 = newRow.insertCell(1);
     var cell3 = newRow.insertCell(2);
+    newRow.addEventListener("mouseover", deleteRowHover);
+    newRow.addEventListener("mouseout", mouseOut);
+    
 
     cell1.innerHTML = input.value;
     cell2.appendChild(img);
     cell3.appendChild(btnEdit);
 
     localStorage.setItem("itemList", addRow.innerHTML);
-
-
 };
 
 // Reset input field
@@ -51,26 +52,50 @@ function resetInput() {
   input.value = "";
 }
 
-// Count number of items in basket
+// Add number of items in the button
 function numberItems() {
   var items = document.getElementById("items");
   var allItems = document.getElementById('myTable').getElementsByTagName('tbody')[0].childElementCount;
   items.innerHTML = allItems;
 }
 
-// Delete rows
+// Delete row + animation
 function deleteRow(clickEvent) {
 /*  alert(clickEvent.target.parentNode.parentNode);
 */
   clickEvent.target.parentNode.parentNode.style.animationPlayState = "running";
-  console.log(clickEvent.target.parentNode.parentNode);
   setTimeout(function(){
     document.getElementById('myTable').getElementsByTagName('tbody')[0].deleteRow(clickEvent.target.parentNode.parentNode.sectionRowIndex);
     localStorage.setItem("itemList", document.getElementById('myTable').innerHTML); 
   }, 1000);
 }
 
-// Edit item in list
+// Delete row when "del" key is pressed + hover
+var row = null;
+document.addEventListener("keydown", del);
+
+function del(event) {
+  if ((event.keyCode == 46) && (row != null)) {
+    row.style.animationPlayState = "running";
+    setTimeout(function(){
+    document.getElementById('myTable').getElementsByTagName('tbody')[0].deleteRow(row.sectionRowIndex);
+    localStorage.setItem("itemList", document.getElementById('myTable').innerHTML); 
+    }, 1000);
+  }
+}
+
+function deleteRowHover(hoverDel) {
+  row = hoverDel.target.parentNode;
+  // console.log("hovering over target " + hoverDel.target.parentNode);
+  // console.log("hovering over row " + row.sectionRowIndex);
+}
+
+function mouseOut(unhoverDel) {
+  row = null;
+}
+
+
+// Edit item name in the list
 function editRow(event) {
   var cell1 = event.target.parentNode.parentNode.cells[0];
   var input = document.createElement("input");
@@ -84,7 +109,7 @@ function editRow(event) {
 
 // Save edited item
 function saveItemEdit(event) {
-  if (event.keyCode === 13) {
+  if (event.keyCode == 13) {
     var cell1 = event.target.parentNode;
     var input = event.target;
     cell1.removeChild(input);
@@ -92,7 +117,7 @@ function saveItemEdit(event) {
   }
 }
 
-// If item already in the list
+// Check duplicate in the list
 function checkDuplicate() {
   for (var i = 0; i < table.rows.length; i++) {
     var item = (table.rows[i].cells[0].textContent.trim());
@@ -114,21 +139,25 @@ function clearWholeTable() {
   }
 }
 
+// When press button
 function addItemInList(){
     var icon = document.createElement("icon");
     icon.classList.add("fas", "fa-spinner", "fa-spin", "mr-2");
     btn.prepend(icon);
 
-    setTimeout(function(){ 
+    setTimeout(function(){
+      // If empty field
     	btn.removeChild(icon);	
     	if (input.value == '') {
         errorMessage.innerHTML = "Please fill in the field!"; 
         return;
       }
+      // If duplicates
       else if (checkDuplicate() == true) {
         errorMessage.innerHTML = "Item already in the list"; 
         return;
       }
+      // Reorder the list
       else if (input.value == 'randomize') {
         for (var i = table.rows.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * i) + 1;
@@ -137,6 +166,7 @@ function addItemInList(){
             table.rows[j].cells[0].innerHTML = temp;
         }
       }
+      // Add new row
     	else addNewRow();
     	errorMessage.innerHTML = "";
       resetInput();
