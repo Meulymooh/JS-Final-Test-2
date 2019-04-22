@@ -62,8 +62,12 @@ function numberItems() {
 function deleteRow(clickEvent) {
 /*  alert(clickEvent.target.parentNode.parentNode);
 */
-   document.getElementById('myTable').getElementsByTagName('tbody')[0].deleteRow(clickEvent.target.parentNode.parentNode.sectionRowIndex);
-    localStorage.setItem("itemList", document.getElementById('myTable').innerHTML);
+  clickEvent.target.parentNode.parentNode.style.animationPlayState = "running";
+  console.log(clickEvent.target.parentNode.parentNode);
+  setTimeout(function(){
+    document.getElementById('myTable').getElementsByTagName('tbody')[0].deleteRow(clickEvent.target.parentNode.parentNode.sectionRowIndex);
+    localStorage.setItem("itemList", document.getElementById('myTable').innerHTML); 
+  }, 1000);
 }
 
 // Edit item in list
