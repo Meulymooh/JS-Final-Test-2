@@ -1,7 +1,9 @@
 var btn = document.getElementsByClassName("btn-primary")[0];
+    btn.addEventListener("click", addItemInList);
+var btn2 = document.getElementsByClassName("btn-primary")[1];
+    btn2.addEventListener("click", deleteItem);
 var errorMessage = document.getElementById("errorMessage");
 var input = document.getElementById("myInput");
-btn.addEventListener("click", addItemInList);
 table = document.getElementById("myTable");
 table.style.background = "linear-gradient(white, grey)";
 var imgEmpty = document.getElementById("emptyField");
@@ -94,6 +96,16 @@ function mouseOut(unhoverDel) {
   row = null;
 }
 
+// Delete row after clicking on button 2 if duplicate
+function deleteRow(event) {
+  for (var i = 0; i < table.rows.length; i++) {
+    var item = (table.rows[i].cells[0].textContent.trim());
+    if (item == input.value) {
+      table.deleteRow(i);
+      resetInput();
+    }
+  }
+}
 
 // Edit item name in the list
 function editRow(event) {
@@ -139,7 +151,7 @@ function clearWholeTable() {
   }
 }
 
-// When press button
+// When press button 1
 function addItemInList(){
     var icon = document.createElement("icon");
     icon.classList.add("fas", "fa-spinner", "fa-spin", "mr-2");
@@ -159,7 +171,7 @@ function addItemInList(){
       }
       // Reorder the list
       else if (input.value == 'randomize') {
-        for (var i = table.rows.length - 1; i > 0; i--) {
+        for (var i = table.rows.length - 1; i > 0; i++) {
             var j = Math.floor(Math.random() * i) + 1;
             var temp = table.rows[i].cells[0].innerHTML;
             table.rows[i].cells[0].innerHTML = table.rows[j].cells[0].innerHTML;
@@ -173,6 +185,22 @@ function addItemInList(){
       numberItems();
     }, 500);
 
+}
+
+// When press button 2
+function deleteItem(event) {
+  var icon = document.createElement("icon");
+      icon.classList.add("fas", "fa-spinner", "fa-spin", "mr-2");
+      btn2.prepend(icon);
+
+  setTimeout(function(){
+    btn2.removeChild(icon);
+    if (checkDuplicate() == true) {
+      deleteRow();
+
+    }
+    else errorMessage.innerHTML = "Item not found";
+  }, 500);
 }
 
 window.addEventListener("load", retrieveData);
