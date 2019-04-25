@@ -2,6 +2,12 @@ var btn = document.getElementsByClassName("btn-primary")[0];
     btn.addEventListener("click", addItemInList);
 var btn2 = document.getElementsByClassName("btn-primary")[1];
     btn2.addEventListener("click", deleteItem);
+    btn2.style.background = "red";
+    btn2.style.borderColor = "orange";
+var btn3 = document.getElementsByClassName("btn-primary")[2];
+    btn3.addEventListener("click", notification)
+    btn3.style.background = "green";
+    btn3.style.borderColor = "yellow";
 var errorMessage = document.getElementById("errorMessage");
 var input = document.getElementById("myInput");
 table = document.getElementById("myTable");
@@ -28,6 +34,8 @@ function addNewRow () {
 
   var btnEdit = document.createElement("button");
       btnEdit.id = "editRow";
+      btnEdit.style.width = "100px";
+      btnEdit.style.height = "40px";
       btnEdit.className = "btn btn-secondary active";
       btnEdit.innerHTML = "Edit";
       btnEdit.addEventListener("click", editRow);  
@@ -200,6 +208,21 @@ function deleteItem(event) {
 
     }
     else errorMessage.innerHTML = "Item not found";
+  }, 500);
+}
+
+// When press button 3
+function notification(event) {
+  var icon = document.createElement("icon");
+      icon.classList.add("fas", "fa-spinner", "fa-spin", "mr-2");
+      btn3.prepend(icon);
+
+  setTimeout(function(){
+    btn3.removeChild(icon);
+    alert("Have fun doing shopping by yourself, carrying heavy bags with no help from your partner! No wonder why your back hurts... \n\nNot to mention the cleaning that you also have to do by yourself. \n\nYou submissive slave!");
+    for(var i=table.rows.length; i > 1 ;i--) {
+    table.deleteRow(i-1);
+    }
   }, 500);
 }
 

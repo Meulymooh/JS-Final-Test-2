@@ -5,7 +5,7 @@ Link to the result:
 
 ## What I managed to finish
 
-Step 1 to 24
+Step 1 to 26
 
 ## What I didn't finish
 
@@ -26,6 +26,8 @@ Continuing the test from home is a slow process. Not sure I'll be able to finish
 
 Count number of items: https://stackoverflow.com/questions/18333427/how-to-insert-row-in-html-table-body-in-javascript
 
+setTimeout: https://www.w3schools.com/jsref/met_win_settimeout.asp
+
 Local storage: https://www.taniarascia.com/how-to-use-local-storage-with-javascript/
 
 CSS gradient: https://www.w3schools.com/css/css3_gradients.asp
@@ -38,4 +40,8 @@ Loop: https://www.w3schools.com/js/js_loop_for.asp
 
 Style animation in javascript: https://www.w3schools.com/jsref/prop_style_animationplaystate.asp
 
+Math.floor(Math.random(): https://www.codecademy.com/en/forum_questions/50c386a4a122749bc1006ca6
 
+alert: https://www.w3schools.com/jsref/met_win_alert.asp
+
+delete all table except for header: https://www.webdeveloper.com/d/17797-is-there-a-way-to-delete-all-rows-in-a-table/2
