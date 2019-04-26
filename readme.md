@@ -9,19 +9,19 @@ Step 1 to 30
 
 ## What I didn't finish
 
-* Instruction 13: the cross is not clickable anymore after retrieving the list. I was blocked on that step so I just commented part of "retrieveData()".
+* Instruction 13: the "delete item" crosses in the table were not clickable anymore after retrieving the list. I was blocked on that step so I just commented part of "retrieveData()" to be able to keep using the crosses.
 
 ## What was the most difficult
 
-* Doing a task that I've never done before takes too much time.
-* The local storage was difficult. I didn't manage to make it work completely.
-* The animation when hiding rows worked only once. It took me a while to find a solution. I should have probably used "animationSart()" and "animationEnd" but I was too lazy to rewrite the animation. I just created a funciton to reset it and included the function into "showRows".
+* Doing a task that I've never done before took too much time.
+* The local storage was difficult. I didn't manage to make it work completely. I just commented part of "retrieveData()" to be able to continue.
+* Not the most difficult thing, but at first the animation to hide rows worked only once. I should have probably used "animationSart()" and "animationEnd" but I was too lazy to rewrite the animation. I just created a function to reset it, then included the function into "showRows". I just spent too much time trying to find to easiest way to trigger the animation again since there are different possibilities.
 
 ## What I loved doing the most 
 
 Redoing what I already achieved with the previous exercises. During the exercises it took me quite  a while to solve basic instructions (e.g. adding a new row), but in the test it was much faster because I did remember things and knew where to find the information when I didn't remember.
 
-Continuing the test from home is a slow process. Not sure I'll be able to finish by the end of the week but I'm progressing.
+Continuing the test at home during the holidays was a slow process but I learned a lot (I got "private lessons" from my very patient partner).
 
 I worked on this exercise during the Easter holidays and the following week in class. Javascript became easier for me from around that time. I think I'm starting to understand the mechanism (especially loops and parameters that have been very difficult for me).
 
