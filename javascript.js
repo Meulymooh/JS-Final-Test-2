@@ -1,3 +1,4 @@
+// Buttons and events
 var btn = document.getElementsByClassName("btn-primary")[0];
     btn.addEventListener("click", addItemInList);
 var btn2 = document.getElementsByClassName("btn-primary")[1];
@@ -8,12 +9,27 @@ var btn3 = document.getElementsByClassName("btn-primary")[2];
     btn3.addEventListener("click", notification)
     btn3.style.background = "green";
     btn3.style.borderColor = "yellow";
+
 var errorMessage = document.getElementById("errorMessage");
 var input = document.getElementById("myInput");
 table = document.getElementById("myTable");
 table.style.background = "linear-gradient(white, grey)";
+
+// Image for emptying the input field
 var imgEmpty = document.getElementById("emptyField");
     imgEmpty.addEventListener("click", clearField);
+
+// Images for reducing & expanding table
+var imgMinus = document.getElementById("minus");
+    imgMinus.style.width = "20px";
+    imgMinus.style.height = "20px";
+    imgMinus.addEventListener("click", hideRows);
+var imgPlus = document.createElement("img");
+    imgPlus.src = "plus.png";
+    imgPlus.id = "plus";
+    imgPlus.style.width = "20px";
+    imgPlus.style.height = "20px";
+    imgPlus.addEventListener("click", showRows);
 
 // Clear input field
 function clearField (event) {
@@ -46,6 +62,7 @@ function addNewRow () {
     var cell1 = newRow.insertCell(0);
     var cell2 = newRow.insertCell(1);
     var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
     newRow.addEventListener("mouseover", deleteRowHover);
     newRow.addEventListener("mouseout", mouseOut);
     
@@ -53,6 +70,7 @@ function addNewRow () {
     cell1.innerHTML = input.value;
     cell2.appendChild(img);
     cell3.appendChild(btnEdit);
+
 
     localStorage.setItem("itemList", addRow.innerHTML);
 };
@@ -105,7 +123,7 @@ function mouseOut(unhoverDel) {
 }
 
 // Delete row after clicking on button 2 if duplicate
-function deleteRow(event) {
+function removeRow(event) {
   for (var i = 0; i < table.rows.length; i++) {
     var item = (table.rows[i].cells[0].textContent.trim());
     if (item == input.value) {
@@ -123,7 +141,6 @@ function editRow(event) {
       input.value = cell1.innerHTML;
       cell1.innerHTML = "";
       cell1.appendChild(input);
-
       input.addEventListener("keyup", saveItemEdit);
 }
 
@@ -204,7 +221,7 @@ function deleteItem(event) {
   setTimeout(function(){
     btn2.removeChild(icon);
     if (checkDuplicate() == true) {
-      deleteRow();
+      removeRow();
 
     }
     else errorMessage.innerHTML = "Item not found";
@@ -219,11 +236,39 @@ function notification(event) {
 
   setTimeout(function(){
     btn3.removeChild(icon);
-    alert("Have fun doing shopping by yourself, carrying heavy bags with no help from your partner! No wonder why your back hurts... \n\nNot to mention the cleaning that you also have to do by yourself. \n\nYou submissive slave!");
+    alert("Have fun doing shopping by yourself, you slave!");
     for(var i=table.rows.length; i > 1 ;i--) {
     table.deleteRow(i-1);
     }
   }, 500);
+}
+
+// Hide rows
+function hideRows (event) {
+  for (var i = 1; i < table.rows.length; i++) {
+  table.rows[i].style.animationPlayState = "running";}
+  setTimeout(function(){
+  for (var i = 1; i < table.rows.length; i++) {
+    table.rows[i].style.visibility = "collapse";
+    imgMinus.replaceWith(imgPlus);
+  }
+  }, 500);
+}
+
+function showRows (event) {
+  for (var i = 1; i < table.rows.length; i++) {
+  table.rows[i].style.visibility = "visible";
+  imgPlus.replaceWith(imgMinus);
+  reset_animation();
+  }
+}
+
+function reset_animation() {
+  for (var i = 1; i < table.rows.length; i++) {
+    table.rows[i].style.animation = 'none';
+    table.rows[i].offsetHeight; /* trigger reflow */
+    table.rows[i].style.animation = null; 
+  }
 }
 
 window.addEventListener("load", retrieveData);
@@ -235,3 +280,5 @@ function retrieveData() {
     // document.getElementById("myTable").innerHTML = oldList;
   }
 }
+
+
